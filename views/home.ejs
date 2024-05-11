@@ -1,0 +1,28 @@
+     <!--as the application grows it seems kinda illogical to add these bootstrap links to all pages, create a folder partials in views which is like a small component, to get bootstrap enable to all commomn nav, head, footer -->
+     <!DOCTYPE html>
+     <html lang="en">
+       <head>
+         <%- include('./partials/head') %>
+         <title>Homepage</title>
+       </head>
+       <body>
+         <%- include('./partials/nav') %>
+     
+         <div class="container mt-3">
+           <div class="row row-cols-4">
+             <% blogs.forEach(blog => { %>
+             <div class="col">
+               <div class="card col" style="width: 18rem">
+                 <img src="<%= blog.coverImageURL %>" class="card-img-top" />
+                 <div class="card-body">
+                   <h5 class="card-title"><%= blog.title %></h5>
+                   <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+                 </div>
+               </div>
+             </div>
+             <% }) %>
+           </div>
+         </div>
+         <%- include('./partials/script') %>
+       </body>
+     </html>     
